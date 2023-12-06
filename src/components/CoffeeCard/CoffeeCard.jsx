@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 
 
-const CoffeeCard = ({ coffee }) => {
+const CoffeeCard = ({ coffee ,coffees,setCoffees}) => {
 
     const { _id, name, photo, supplier, category } = coffee;
 
@@ -38,6 +38,9 @@ const CoffeeCard = ({ coffee }) => {
                                 text: "Your Product has been deleted.",
                                 icon: "success"
                             });
+
+                            const remainimg = coffees.filter(cof => cof._id !== id)
+                            setCoffees(remainimg)
                         }
                     })
             }
@@ -84,6 +87,8 @@ const CoffeeCard = ({ coffee }) => {
 
 CoffeeCard.propTypes = {
     coffee: PropTypes.object,
+    setCoffees: PropTypes.func,
+    coffees: PropTypes.object
 };
 
 export default CoffeeCard;

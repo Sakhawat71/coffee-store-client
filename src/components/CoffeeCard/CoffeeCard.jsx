@@ -3,12 +3,12 @@ import { FaEye } from "react-icons/fa";
 import { AiFillEdit } from "react-icons/ai";
 import { MdDelete } from "react-icons/md";
 import Swal from 'sweetalert2';
-import { data } from 'autoprefixer';
+
 
 
 const CoffeeCard = ({ coffee }) => {
 
-    const { _id, name, photo, quantity, supplier, taste, category, details } = coffee;
+    const { _id, name, photo, supplier, category } = coffee;
 
 
 
@@ -41,13 +41,6 @@ const CoffeeCard = ({ coffee }) => {
                     })
             }
         });
-
-
-
-
-
-
-
 
     }
 

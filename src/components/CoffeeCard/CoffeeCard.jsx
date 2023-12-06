@@ -3,6 +3,7 @@ import { FaEye } from "react-icons/fa";
 import { AiFillEdit } from "react-icons/ai";
 import { MdDelete } from "react-icons/md";
 import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
 
 
 
@@ -13,7 +14,7 @@ const CoffeeCard = ({ coffee }) => {
 
 
     const handelDelete = id => {
-        console.log(id)
+        // console.log(id)
 
         Swal.fire({
             title: "Are you sure?",
@@ -30,7 +31,7 @@ const CoffeeCard = ({ coffee }) => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data)
+                        // console.log(data)
                         if (data.deletedCount > 0) {
                             Swal.fire({
                                 title: "Deleted!",
@@ -44,8 +45,10 @@ const CoffeeCard = ({ coffee }) => {
 
     }
 
-
-
+    // onClick={() => handelEditCoffee(_id)}
+    // const handelEditCoffee = id => {
+    //     console.log(id)
+    // }
 
 
     return (
@@ -65,9 +68,11 @@ const CoffeeCard = ({ coffee }) => {
                 <button className="btn join-item text-xl text-white bg-[#D2B48C]">
                     <FaEye></FaEye>
                 </button>
-                <button className="btn join-item text-xl text-white bg-[#3C393B]">
-                    <AiFillEdit></AiFillEdit>
-                </button>
+                <Link to={`/updatecoffee/${_id}`}>
+                    <button className="btn join-item text-xl text-white bg-[#3C393B]">
+                        <AiFillEdit></AiFillEdit>
+                    </button>
+                </Link>
                 <button onClick={() => handelDelete(_id)} className="btn join-item text-xl text-white bg-[#EA4744]">
                     <MdDelete></MdDelete>
                 </button>

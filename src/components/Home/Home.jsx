@@ -4,7 +4,7 @@ import CoffeeCard from "../CoffeeCard/CoffeeCard";
 const Home = () => {
 
     const coffees = useLoaderData();
-    console.log(coffees)
+    // console.log(coffees)
 
 
 

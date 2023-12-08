@@ -31,6 +31,7 @@ const Users = () => {
                         <tr className="bg-base-200">
                             <th>Email</th>
                             <th>Join date</th>
+                            <th>Last Login</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -39,6 +40,7 @@ const Users = () => {
                             users.map(user => <tr key={user._id} >
                                 <td>{user.email}</td>
                                 <td>{user.createTime}</td>
+                                <td>{user.lestLoggedAt}</td>
                                 <td onClick={() => handelDelete(user._id)} className="btn m-1 bg-white">X</td>
                             </tr>)
                         }

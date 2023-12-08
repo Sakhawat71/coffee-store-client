@@ -5,6 +5,7 @@ import AddCoffee from "../components/Coffee/AddCoffee";
 import UpdateCoffee from "../components/Coffee/UpdateCoffee";
 import SignUp from "../components/SignUp/SignUp";
 import SignIn from "../components/SignIn/SignIn";
+import Users from "../components/Users/Users";
 
 const router = createBrowserRouter([
     {
@@ -33,6 +34,11 @@ const router = createBrowserRouter([
             {
                 path: '/signin',
                 element: <SignIn></SignIn>
+            },
+            {
+                path: '/users',
+                element: <Users></Users>,
+                loader: () => fetch('http://localhost:5000/user')
             }
         ]
     }

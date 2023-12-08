@@ -1,6 +1,10 @@
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
+
 
 const SignUp = () => {
 
+    const {createUserEmailPass} = useContext(AuthContext);
 
     const handelSignUp = e => {
         e.preventDefault()
@@ -8,7 +12,36 @@ const SignUp = () => {
         const email = form.email.value;
         const password = form.password.value;
 
-        console.log(email,password)
+        createUserEmailPass(email,password)
+        .then((result)=>{
+            const user =result.user;
+            console.log(result.user)
+            const createTime = user?.metadata?.creationTime;
+            const userInfo = {email,createTime};
+            fetch('http://localhost:5000/user', {
+                method: 'POST',
+                headers: {
+                    "Content-Type" : "application/json"
+                },
+                body: JSON.stringify(userInfo)
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if(data.insertedId){
+                    console.log('user added at database.')
+                }
+
+            })
+
+        } )
+        .catch((error) =>{
+            const errorMessage = error.message;
+            console.log(errorMessage)
+        })
+
+
+        // console.log(email,password)
 
     }
 
@@ -32,12 +65,11 @@ const SignUp = () => {
                                     <span className="label-text">Password</span>
                                 </label>
                                 <input type="password" name="password" placeholder="password" className="input input-bordered" required />
-                                <label className="label">
-                                    <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                                </label>
+                                
                             </div>
                             <div className="form-control mt-6">
-                                <button className="btn btn-primary">Login</button>
+                                <p>By Clicking Sign up, you agree to Terms of Service and Privacy Policy.</p>
+                                <button className="btn btn-primary">Sign up</button>
                             </div>
                         </form>
                     </div>

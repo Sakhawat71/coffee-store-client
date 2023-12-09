@@ -16,7 +16,7 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element:<Home></Home>,
-                loader: () => fetch('https://coffee-store-server.onrender.com')
+                loader: () => fetch('https://coffee-store-server.onrender.com/coffee')
             },
             {
                 path: '/addcoffee',
@@ -25,7 +25,7 @@ const router = createBrowserRouter([
             {
                 path: 'updatecoffee/:id',
                 element: <UpdateCoffee></UpdateCoffee>,
-                loader: ({params}) => fetch(`https://coffee-store-server.onrender.com/${params.id}`)
+                loader: ({params}) => fetch(`https://coffee-store-server.onrender.com/coffee/${params.id}`)
             },
             {
                 path: '/signup',

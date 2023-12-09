@@ -17,7 +17,7 @@ const AddCoffee = () => {
         const newCoffee = { name, quantity, supplier, taste, category, details, photo }
         console.log(newCoffee)
 
-        fetch('https://coffee-store-server.onrender.com', {
+        fetch('https://coffee-store-server.onrender.com/coffee', {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",

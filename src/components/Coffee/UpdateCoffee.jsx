@@ -21,7 +21,7 @@ const UpdateCoffee = () => {
         const newCoffee = { name, quantity, supplier, taste, category, details, photo }
         console.log(newCoffee)
 
-        fetch(`https://coffee-store-server.onrender.com/${_id}`, {
+        fetch(`https://coffee-store-server.onrender.com/coffee/${_id}`, {
             method: 'PUT',
             headers: {
                 "Content-Type": "application/json",

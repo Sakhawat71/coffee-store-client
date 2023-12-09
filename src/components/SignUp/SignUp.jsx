@@ -18,7 +18,7 @@ const SignUp = () => {
             console.log(result.user)
             const createTime = user?.metadata?.creationTime;
             const userInfo = {email,createTime};
-            fetch('https://coffee-store-server-sabbir.vercel.app/user', {
+            fetch('https://coffee-store-server.onrender.com/user', {
                 method: 'POST',
                 headers: {
                     "Content-Type" : "application/json"

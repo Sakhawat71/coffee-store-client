@@ -17,7 +17,7 @@ const AddCoffee = () => {
         const newCoffee = { name, quantity, supplier, taste, category, details, photo }
         console.log(newCoffee)
 
-        fetch('https://coffee-store-server-sabbir.vercel.app/coffee', {
+        fetch('https://coffee-store-server.onrender.com', {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",

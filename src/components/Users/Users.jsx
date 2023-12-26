@@ -8,7 +8,7 @@ const Users = () => {
 
     const handelDelete = id => {
 
-        fetch(`https://coffee-store-server.onrender.com/user/${id}`, {
+        fetch(`https://coffee-store-server-sabbir.vercel.app/user/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())

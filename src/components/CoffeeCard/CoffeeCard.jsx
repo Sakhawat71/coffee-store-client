@@ -4,10 +4,11 @@ import { AiFillEdit } from "react-icons/ai";
 import { MdDelete } from "react-icons/md";
 import Swal from 'sweetalert2';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 
 
-const CoffeeCard = ({ coffee ,coffees,setCoffees}) => {
+const CoffeeCard = ({ coffee, coffees, setCoffees }) => {
 
     const { _id, name, photo, supplier, category } = coffee;
 
@@ -26,13 +27,10 @@ const CoffeeCard = ({ coffee ,coffees,setCoffees}) => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://coffee-store-server-sabbir.vercel.app/coffee/${id}`, {
-                    method: 'DELETE'
-                })
-                    .then(res => res.json())
+                axios.delete(`https://coffee-store-server-sabbir.vercel.app/coffee/${id}`)
                     .then(data => {
                         // console.log(data)
-                        if (data.deletedCount > 0) {
+                        if (data.data.deletedCount > 0) {
                             Swal.fire({
                                 title: "Deleted!",
                                 text: "Your Product has been deleted.",

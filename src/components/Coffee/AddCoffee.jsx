@@ -1,3 +1,4 @@
+import axios from "axios";
 import Swal from "sweetalert2";
 
 const AddCoffee = () => {
@@ -17,16 +18,9 @@ const AddCoffee = () => {
         const newCoffee = { name, quantity, supplier, taste, category, details, photo }
         console.log(newCoffee)
 
-        fetch('https://coffee-store-server-sabbir.vercel.app/coffee', {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(newCoffee)
-        })
-            .then(res => res.json())
+        axios.post('https://coffee-store-server-sabbir.vercel.app/coffee',newCoffee)
             .then(data => {
-                if (data.insertedId) {
+                if (data.data.insertedId) {
                     Swal.fire({
                         title: 'success!',
                         text: '',
@@ -36,7 +30,7 @@ const AddCoffee = () => {
                 }
             })
 
-        // form.reset()
+        form.reset()
     }
 
 

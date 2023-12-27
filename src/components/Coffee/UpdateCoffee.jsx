@@ -1,10 +1,11 @@
+import axios from "axios";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const UpdateCoffee = () => {
 
     const coffee = useLoaderData()
-    const {_id, name, quantity, supplier, taste, category, details, photo } =coffee;
+    const { _id, name, quantity, supplier, taste, category, details, photo } = coffee;
 
     const handelUpdateCoffee = e => {
         e.preventDefault()
@@ -19,19 +20,11 @@ const UpdateCoffee = () => {
         const photo = form.photo.value;
 
         const newCoffee = { name, quantity, supplier, taste, category, details, photo }
-        console.log(newCoffee)
 
-        fetch(`https://coffee-store-server-sabbir.vercel.app/coffee/${_id}`, {
-            method: 'PUT',
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(newCoffee)
-        })
-            .then(res => res.json())
+        axios.put(`https://coffee-store-server-sabbir.vercel.app/coffee/${_id}`, newCoffee)
             .then(data => {
                 console.log(data);
-                if (data.modifiedCount > 0) {
+                if (data.data.modifiedCount > 0) {
                     Swal.fire({
                         title: 'success!',
                         text: 'Updated',
@@ -41,7 +34,7 @@ const UpdateCoffee = () => {
                 }
             })
 
-        
+
     }
 
 

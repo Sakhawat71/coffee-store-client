@@ -6,6 +6,7 @@ import UpdateCoffee from "../components/Coffee/UpdateCoffee";
 import SignUp from "../components/SignUp/SignUp";
 import SignIn from "../components/SignIn/SignIn";
 import Users from "../components/Users/Users";
+import UserTanStack from "../components/Users/UserTanStack";
 
 const router = createBrowserRouter([
     {
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
                 path: '/users',
                 element: <Users></Users>,
                 loader: () => fetch('https://coffee-store-server-sabbir.vercel.app/user')
+            },
+            {
+                path: '/user-tanstack',
+                element: <UserTanStack></UserTanStack>,
             }
         ]
     }

@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 
@@ -8,12 +9,9 @@ const Users = () => {
 
     const handelDelete = id => {
 
-        fetch(`https://coffee-store-server-sabbir.vercel.app/user/${id}`, {
-            method: 'DELETE'
-        })
-            .then(res => res.json())
+        axios.delete(`https://coffee-store-server-sabbir.vercel.app/user/${id}`)
             .then(data => {
-                if (data.deletedCount > 0) {
+                if (data.data.deletedCount > 0) {
                     const remainingUser = users.filter(user => user._id !== id);
                     setUsers(remainingUser);
                 }
